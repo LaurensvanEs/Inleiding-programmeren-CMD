@@ -1,0 +1,103 @@
+body {
+  background-image: url('../img/achtergrond.jpg');
+  /* bron achtergrond: https://images.photowall.com/products/50265/wooden-plank-wall.jpg?h=699&q=85 */
+}
+
+h1 {
+  text-align: center;
+  border-color: black;
+  border-radius: 10px;
+  background: black;
+  color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container div {
+  margin-left: 125px;
+}
+
+.knoppen p {
+  padding: 25px;
+  font-size: large;
+  border-style: solid;
+  border-radius: 10px;
+  text-align: center;
+  width: 200px;
+  height: 25px;
+  cursor: pointer;
+}
+
+#tomaatknop {
+  border-color: black;
+  background: red;
+  color: white;
+}
+
+#komkommerknop {
+  border-color: black;
+  background: greenyellow;
+  color: black;
+}
+
+#champignonknop {
+  border-color: black;
+  background: white;
+  color: black;
+}
+
+#randomknop {
+  border-color: black;
+  background: lightskyblue;
+  color: white;
+}
+
+#resetknop {
+  border-color: black;
+  background: grey;
+  color: white;
+}
+
+/*bron voor de volgende code https://stackoverflow.com/questions/48474/how-do-i-position-one-image-on-top-of-another-in-html */
+.salade {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+#basis {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#tomaat {
+  position: absolute;
+  top: 150px;
+  left: 220px;
+  z-index: 3;
+  max-width: 70px;
+  opacity: 0%;
+}
+
+#komkommer {
+  position: absolute;
+  top: 220px;
+  left: 300px;
+  z-index: 3;
+  max-width: 60px;
+  opacity: 0%;
+}
+
+#champignon {
+  position: absolute;
+  top: 150px;
+  left: 350px;
+  z-index: 3;
+  max-width: 80px;
+  opacity: 0%;
+}
