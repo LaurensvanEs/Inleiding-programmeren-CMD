@@ -1,4 +1,4 @@
-//versie 5: ingredient champignon toegevoegd en random ingredient knop toegevoegd
+//versie 5: Random functie aangepast met queryselectorAll
 console.log("linked")
 //const voor de knoppen omdat deze niet veranderen
 const tomaatKnop = document.querySelector('#tomaatknop');
@@ -46,15 +46,29 @@ function showIngredient(event) {
 
 //functie die een random ingredient uit een array selecteerd en een click op de knop voor het ingredient simuleert
 function showRandom() {
-    if (!randomGebruikt) {
-        let ingredienten = ['#tomaatknop', '#komkommerknop', '#champignonknop'];
+    if (!randomGebruikt && !tomaatZichtbaar && !komkommerZichtbaar && !champignonZichtbaar) {
+        //let ingredienten = ['#tomaatknop', '#komkommerknop', '#champignonknop'];
+        let ingredienten = [...document.querySelectorAll("div.knoppen p")].map(item => item.id);  
+        //bron: https://stackoverflow.com/questions/65403321/query-selector-to-array
+        //bron: https://stackoverflow.com/questions/55476368/queryselectorall-that-only-returns-id-names 
         let randomKeuze = Math.random() * 2;
         randomKeuze = Math.round(randomKeuze);
-        document.querySelector(ingredienten[randomKeuze]).click(); //simuleert click event op de ingredientknop
+        let keuzeIndex ='#' + ingredienten[randomKeuze];
+        document.querySelector(keuzeIndex).click(); //simuleert click event op de ingredientknop
         //bron: https://stackoverflow.com/questions/2705583/how-to-simulate-a-click-with-javascript
         randomGebruikt = true
-    } else {
+    } else if (randomGebruikt == true) {
         randomknop.textContent = "Je hebt de knop al gebruikt";
+        randomknop.style.color = 'red';
+
+        //timeout die na 2 seconden de tekst herstelt
+        setTimeout(function () {
+            randomknop.textContent = "Random";
+            randomknop.style.color = 'white';
+        }, 2000);
+        //bron: https://stackoverflow.com/questions/37594636/how-to-display-message-for-3-seconds-in-javascript 
+    } else {
+        randomknop.textContent = "Je hebt al ingredienten gebruikt";
         randomknop.style.color = 'red';
 
         //timeout die na 2 seconden de tekst herstelt
